@@ -218,6 +218,15 @@
   margin-top: 50px;
 }
 
+.product-detail-button[disabled] {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.product-detail-button[disabled]:hover {
+  background: #ccc;
+}
 .pagination button {
   background: #007bff;
   color: #fff;
