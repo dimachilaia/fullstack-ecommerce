@@ -4,8 +4,9 @@
     <h1 class="product-detail-name">{{ product.name }}</h1>
     <h3 class="product-detail-price">{{ product.price }}</h3>
     <button @click="addToCart" class="product-detail-button" v-if="!itemIsInCart">Add to Cart</button>
-    <button v-else disabled>Item is in the cart...!</button>
-  </div>
+    <button v-else disabled class="product-detail-button">
+  This Item is in Your Cart
+</button>  </div>
   <div v-else>
     <p class="product-not-found">Product not found.</p>
   </div>
