@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   padding: 20px;
 }
@@ -209,4 +210,31 @@
 
 .cart-link:hover {
   background-color: #ec971f;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.pagination button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  margin: 0 10px;
+}
+
+.pagination button:hover {
+  background: #0056b3;
+}
+
+.pagination button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
