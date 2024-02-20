@@ -3,7 +3,7 @@
     <img :src="product.imageName" class="product-detail-image" />
     <h1 class="product-detail-name">{{ product.name }}</h1>
     <h3 class="product-detail-price">{{ product.price }}</h3>
-    <button class="product-detail-button">Add to Cart</button>
+    <button @click="addToCart" class="product-detail-button">Add to Cart</button>
   </div>
   <div v-else>
     <p class="product-not-found">Product not found.</p>
@@ -11,15 +11,27 @@
 </template>
 
 <script>
-import { products } from "../temp-data";
-
+import axios from "axios";
 export default {
   name: "ProductDetailPage",
-  computed: {
-    product() {
-      const productId = parseInt(this.$route.params.productId);
-      return products.find((product) => product.id === productId);
+  data() {
+    return {
+      product: {},
+    };
+  },
+  methods: {
+    addToCart() {
+      axios.post("/api/users/12345/cart", {
+        id: this.$route.params.productId,
+      });
+      alert("added successfully");
     },
+  },
+  async created() {
+    const response = await axios.get(`/api/products/${this.$route.params.productId}`);
+    const product = response.data;
+    console.log(product);
+    this.product = product;
   },
 };
 </script>

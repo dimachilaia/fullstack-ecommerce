@@ -1,23 +1,29 @@
 <template>
   <div>
     <h1 class="products-title">Products</h1>
-    <ProductsList :products="products"/>
+    <ProductsList :products="products" />
   </div>
 </template>
 
 <script>
-import { products } from "@/temp-data";
 import ProductsList from "../components/ProductsList.vue";
+import axios from "axios";
 
 export default {
   name: "ProductsPage",
   data() {
     return {
-      products,
+      products: [],
     };
   },
   components: {
     ProductsList,
+  },
+  async created() {
+    const response = await axios.get("/api/products");
+    const products = response.data;
+    console.log(response.data);
+    this.products = products;
   },
 };
 </script>
