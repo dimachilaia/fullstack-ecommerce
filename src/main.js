@@ -10,6 +10,10 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes: [
     {
+      path: "/",
+      redirect: "/products",
+    },
+    {
       path: "/cart",
       component: ShoppingCartPage,
     },
@@ -21,6 +25,12 @@ const router = createRouter({
       path: "/products/:productId",
       component: ProductDetailPage,
     },
+    {
+      path: "/products",
+      component: ProductsPage,
+      props: (route) => ({ page: route.query.page }),
+    },
+    
   ],
 });
 

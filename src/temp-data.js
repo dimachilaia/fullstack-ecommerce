@@ -1,6 +1,5 @@
 import firstImage from "./assets/bag.avif";
 import secondImage from "./assets/bag.avif";
-import image2 from "./assets/bag2.avif";
 export const products = [
   {
     id: 1,
@@ -17,19 +16,16 @@ export const products = [
   {
     id: 3,
     name: "Bag",
-    imageName: image2,
     price: "$99",
   },
   {
     id: 4,
     name: "Bag",
-    imageName: image2,
     price: "$99",
   },
   {
     id: 5,
     name: "Bag",
-    imageName: image2,
     price: "$99",
   },
   {
