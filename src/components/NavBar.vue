@@ -3,23 +3,22 @@
     <router-link to="/products" class="navbar-link products-link">Products</router-link>
     <router-link to="/cart" class="navbar-link cart-link">
       Shopping Cart
-      <span class="cart-count" >{{ cartItemsCount.count }}</span>
+      <span class="cart-count">{{ cartItemsCount.count }}</span>
     </router-link>
   </nav>
 </template>
 
 <script>
-import { inject } from 'vue';
+import { inject } from "vue";
 
 export default {
   name: "NavBar",
   setup() {
-    const cartItemsCount = inject('cartItemsCount');
-
+    const cartItemsCount = inject("cartItemsCount");
     return {
-      cartItemsCount
+      cartItemsCount,
     };
-  }
+  },
 };
 </script>
 
