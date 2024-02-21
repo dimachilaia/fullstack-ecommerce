@@ -29,8 +29,10 @@ export default {
       await removeFromCart("12345", productId);
       this.cartItems = await fetchCartItems("12345");
       toast.success("Item removed from cart successfully!");
+    this.cartItemsCount.count = this.cartItems.length;
     },
   },
+  inject:['cartItemsCount'],
   async created() {
     this.cartItems = await fetchCartItems("12345");
   },

@@ -23,6 +23,7 @@ export default {
       alreadyInCart: false,
     };
   },
+  inject: ['cartItemsCount'],
   computed: {
     itemIsInCart() {
       return this.cartItems.some((item) => item.id === this.$route.params.productId);
@@ -38,6 +39,7 @@ export default {
         .then(() => {
           this.alreadyInCart = true;
           toast.success("Item added successfully");
+          this.cartItemsCount.count++; 
         })
         .catch(() => {});
     },
