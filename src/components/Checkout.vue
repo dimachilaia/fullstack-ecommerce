@@ -1,19 +1,24 @@
 <template>
-  <div class="checkout-container">
-    <h2>Checkout</h2>
-    <div class="cart-items">
-      <div v-for="item in cartItems" :key="item._id" class="cart-item">
-        <img :src="item.imageName" alt="product image" class="cart-item-image" />
-        <div class="cart-item-info">
-          <p class="cart-item-name">{{ item.name }}</p>
-          <p class="cart-item-price">{{ item.price }}</p>
+  <div>
+    <div v-if="loading" class="loader-container">
+      <div class="loader"></div>
+    </div>
+    <div v-else class="checkout-container">
+      <h2>Checkout</h2>
+      <div class="cart-items">
+        <div v-for="item in cartItems" :key="item._id" class="cart-item">
+          <img :src="item.imageName" alt="product image" class="cart-item-image" />
+          <div class="cart-item-info">
+            <p class="cart-item-name">{{ item.name }}</p>
+            <p class="cart-item-price">{{ item.price }}</p>
+          </div>
         </div>
       </div>
+      <div class="total-price-container">
+        <p class="total-price">Total Price: {{ totalPrice }}</p>
+      </div>
+      <button class="checkout-button">Proceed to Payment</button>
     </div>
-    <div class="total-price-container">
-      <p class="total-price">Total Price: {{ totalPrice }}</p>
-    </div>
-    <button class="checkout-button">Proceed to Payment</button>
   </div>
 </template>
 
@@ -26,11 +31,13 @@ export default {
     return {
       cartItems: [],
       totalPrice: 0,
+      loading: true,
     };
   },
   async created() {
     this.cartItems = await fetchCartItems("12345");
     this.calculateTotal();
+    this.loading = false;
   },
   methods: {
     calculateTotal() {
