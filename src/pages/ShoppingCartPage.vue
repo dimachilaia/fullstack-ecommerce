@@ -11,6 +11,8 @@
 <script>
 import ShoppingCartsList from "../components/ShoppingCartsList.vue";
 import { fetchCartItems, removeFromCart } from "../store/Cart";
+import { useToast } from "vue-toastify";
+
 export default {
   name: "ShoppingCartPage",
   data() {
@@ -23,8 +25,10 @@ export default {
   },
   methods: {
     async removeFromCart(productId) {
+      const toast = useToast();
       await removeFromCart("12345", productId);
       this.cartItems = await fetchCartItems("12345");
+      toast.success("Item removed from cart successfully!");
     },
   },
   async created() {
@@ -32,3 +36,4 @@ export default {
   },
 };
 </script>
+

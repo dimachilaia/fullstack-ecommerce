@@ -6,7 +6,8 @@ import ShoppingCartPage from "./pages/ShoppingCartPage.vue";
 import ProductsPage from "./pages/ProductsPage.vue";
 import ProductDetailPage from "./pages/ProductDetail.vue";
 import CheckoutPage from "./components/Checkout.vue";
-import { createPinia } from "pinia";
+import "vue-toastify/index.css";
+import VueToastify from 'vue-toastify';
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -38,6 +39,6 @@ const router = createRouter({
     },
   ],
 });
-const pinia = createPinia();
 
-createApp(App).use(router).use(pinia).mount("#app");
+
+createApp(App).use(router).use(VueToastify).mount("#app");
